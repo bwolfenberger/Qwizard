@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import QuestionList from '../components/QuestionList'
+const quizApiKey = process.env.QUIZ_API_KEY
 // import styles from '../styles/Home.module.css'
 
 export default function Home(questions) {
@@ -16,7 +17,7 @@ export default function Home(questions) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=NO9367LnqoEXNu5hv33VZJbtftSxXPxaEcF1vxGb&limit=10&tags=HTML`)
+  const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=HTML`)
   const questions = await res.json()
   return {
     props: {

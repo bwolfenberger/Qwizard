@@ -1,25 +1,19 @@
-import Head from 'next/head'
-import QuestionList from '../components/QuestionList'
 import Link from 'next/link'
+import categoryStyles from '../styles/Category.module.css'
 // const quizApiKey = process.env.QUIZ_API_KEY
 
 export default function Home(questions) {
   return (
-    <div>
-      <Head>
-        <title>Benji</title>
-        <meta name='keywords' content='web developement, programming' />
-      </Head>
-      
+    <div>      
       <h3>Select your quiz category:</h3>
       <ul>
-        <li>
-            <Link href='/questions/HTML'>HTML</Link>
+        <li className={categoryStyles.category}>
+          <Link href='/questions/HTML'>HTML</Link>
         </li>
-        <li>
+        <li className={categoryStyles.category}>
           <Link href='/questions/JavaScript'>JavaScript</Link>
         </li>
-        <li>
+        <li className={categoryStyles.category}>
           <Link href='/questions/MySQL'>MySQL</Link>
         </li>
     </ul>

@@ -19,15 +19,15 @@ const QuestionList = (questions) => {
     )
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=HTML`)
-  const questions = await res.json()
-  return {
-    props: {
-      questions
-    }
-  }
-}
+// export const getStaticProps = async () => {
+//   const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=HTML`)
+//   const questions = await res.json()
+//   return {
+//     props: {
+//       questions
+//     }
+//   }
+// }
 
 
 // import questionStyles from '../styles/Questions.module.css'

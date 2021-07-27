@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import QuestionList from '../components/QuestionList'
-const quizApiKey = process.env.QUIZ_API_KEY
-// import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+// const quizApiKey = process.env.QUIZ_API_KEY
 
 export default function Home(questions) {
   return (
@@ -11,17 +11,29 @@ export default function Home(questions) {
         <meta name='keywords' content='web developement, programming' />
       </Head>
       
-      <QuestionList questions={questions}/>
+      <h3>Select your quiz category:</h3>
+      <ul>
+        <li>
+            <Link href='/questions/HTML'>HTML</Link>
+        </li>
+        <li>
+          <Link href='/questions/JavaScript'>JavaScript</Link>
+        </li>
+        <li>
+          <Link href='/questions/MySQL'>MySQL</Link>
+        </li>
+    </ul>
+      {/* <QuestionList questions={questions}/> */}
     </div>
   )
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=HTML`)
-  const questions = await res.json()
-  return {
-    props: {
-      questions
-    }
-  }
-}
+// export const getStaticProps = async () => {
+//   const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=HTML`)
+//   const questions = await res.json()
+//   return {
+//     props: {
+//       questions
+//     }
+//   }
+// }

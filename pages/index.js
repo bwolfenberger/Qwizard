@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import categoryStyles from '../styles/Category.module.css'
-// const quizApiKey = process.env.QUIZ_API_KEY
 
-export default function Home(questions) {
+export default function Home() {
   return (
     <div>      
-      <h3>Select your quiz category:</h3>
+      <p>Select your quiz category:</p>
       <ul>
         <li className={categoryStyles.category}>
           <Link href='/questions/HTML'>HTML</Link>
@@ -14,20 +13,18 @@ export default function Home(questions) {
           <Link href='/questions/JavaScript'>JavaScript</Link>
         </li>
         <li className={categoryStyles.category}>
+          <Link href='/questions/DevOps'>DevOps</Link>
+        </li>
+        <li className={categoryStyles.category}>
           <Link href='/questions/MySQL'>MySQL</Link>
         </li>
-    </ul>
-      {/* <QuestionList questions={questions}/> */}
+        <li className={categoryStyles.category}>
+          <Link href='/questions/Linux'>Linux</Link>
+        </li>
+        <li className={categoryStyles.category}>
+          <Link href='/questions/WordPress'>WordPress</Link>
+        </li>
+      </ul>
     </div>
   )
 }
-
-// export const getStaticProps = async () => {
-//   const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=HTML`)
-//   const questions = await res.json()
-//   return {
-//     props: {
-//       questions
-//     }
-//   }
-// }

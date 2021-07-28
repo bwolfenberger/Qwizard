@@ -11,13 +11,15 @@ const questions = (questions) => {
 
     const [showAnswer, setShowAnswer] = useState(false);
     const [result, setResult] = useState('');
+    const [parentIndex, setParentIndex] = useState('');
 
     function toggle(){
       setShowAnswer(!showAnswer);
     }
 
-    function showResult(question, i){
+    function showResult(question, i, parentI){
         setResult(Object.values(question.correct_answers)[i])
+        setParentIndex(parentI)
     }
     console.log(result)
 
@@ -37,28 +39,39 @@ const questions = (questions) => {
 
 
             <h2 className={questionStyles.grid}>{questions.category} Questions</h2>
-            {questions.questions.map((question, i) => (
+            {questions.questions.map((question, parentI) => (
                 <div className={questionStyles.grid}>
 
 
                     <h3 className={questionStyles.title}>{question.question}</h3>
 
-                    
-                    {result == 'true' &&
-                    <div className={questionStyles.correct}>Correct!</div>}
-
-                    {result == 'false' &&
-                    <div className={questionStyles.incorrect}>Incorrect, try again 😢</div>}
-
 
                         {Object.values(question.answers).map((answers, i) => (
                             answers !== null &&
-                            <>
-                            <button onClick={() => showResult(question, i)} className={questionStyles.card}>{answers}</button>
-                            {/* <a className={questionStyles.answer}>{result}</a> */}
-                            </>
+                            <button onClick={() => showResult(question, i, parentI)} className={questionStyles.button}>{answers}</button>
+                        ))}
 
+                    {parentIndex == parentI &&
+                    <div>
+                        {result == 'true' &&
+                        <div className={questionStyles.correct}>Correct!</div>}
+
+                        {result == 'false' &&
+                        <div className={questionStyles.incorrect}>Incorrect, try again 😢</div>}
+                    </div>}
+
+                    {/* <button className={questionStyles.button} onClick={toggle}>Show Answers</button>
+                    <div style={{
+                        display: showAnswer?"block":"none"
+                    }}>
+                        {Object.values(question.answers).map((answers, i) => (
+                            i == (parseInt(Object.values(question.correct_answers).map((ans, idx) => ans === 'true' ? idx: '').filter(String))) &&
+                                <>
+                                    <a className={questionStyles.answer}>{answers}</a>
+                                </>
                     ))}
+                    </div> */}
+
 
                 </div>
             ))}

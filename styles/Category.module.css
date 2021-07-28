@@ -18,7 +18,7 @@
     margin: 1rem;
     padding: 1rem;
     text-align: center;
-    color: inherit;
+    color: #4e91c2;
     text-decoration: none;
     border: 1px solid #eaeaea;
     border-radius: 10px;
@@ -30,8 +30,8 @@
   .category:hover,
   .category:focus,
   .category:active {
-    color: #0070f3;
-    border-color: #0070f3;
+    color: #67b5eb;
+    border-color: #67b5eb;
   }
   
   .category h2 {

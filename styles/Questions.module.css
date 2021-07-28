@@ -82,3 +82,11 @@
     border-color: rgb(0, 168, 0);
     color: rgb(0, 168, 0);
   }
+
+  .correct {
+    color: green;
+  }
+
+  .incorrect {
+    color: red;
+  }

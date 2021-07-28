@@ -1,13 +1,31 @@
+import { GetServerSidePropsContext } from 'next';
 import { useState } from 'react'
 import questionStyles from '../../../styles/Questions.module.css'
 
 const quizApiKey = process.env.QUIZ_API_KEY
 
-const questions = (questions) => {
+interface Questions {
+    category: string,
+    question: string,
+    correct_answers: string[],
+    answers: string[]
+}
+
+interface PageProps {
+    questions: Questions[]
+}
+
+interface ResultProps {
+    question: string,
+    i: number,
+    parentI: number
+}
+
+const questions = ({ questions }: PageProps) => {
     const [result, setResult] = useState(' ');
     const [parentIndex, setParentIndex] = useState('');
 
-    function showResult(question, i, parentI){
+    function showResult({ question, i, parentI }: ResultProps){
         setResult(Object.values(question.correct_answers)[i])
         setParentIndex(parentI)
     }
@@ -41,7 +59,7 @@ const questions = (questions) => {
     )
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const category = context.params.category
 
     const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=${context.params.category}`)

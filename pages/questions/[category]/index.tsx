@@ -25,37 +25,45 @@ const quizApiKey = process.env.QUIZ_API_KEY
         category: string,
     }
 // <-- Main Function -->
+// Questions prop object brought in from external quiz source
 const questions = (questions: PageProps) => {
     // Declare states
-    const [result, setResult] = useState<string>('');
-    const [parentIndex, setParentIndex] = useState<number>(0);
+    const [correctAnswer, setCorrectAnswer] = useState<string>('');
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
-    // Set states for current selected answer
-    function showResult(question: Questions, i: number, parentI: number){
-        setResult(Object.values(question.correct_answers)[i])
-        setParentIndex(parentI)
+    // Set states based on click data
+    function showResult(question: Questions, i: number, questionIndex: number){
+        // Set CorrectAnswer to either true or false
+        setCorrectAnswer(Object.values(question.correct_answers)[i])
+        // Set CurrentQuestionIndex to the clicked on question index
+        setCurrentQuestionIndex(questionIndex)
     }
 
+// <-- Main Return for displaying list of questions -->
     return (
         <div>
             <h2 className={questionStyles.grid}>{questions.category} Questions</h2>
-            
-            {questions.questions.map((question, parentI) => (
+            {/* First questions is question object brought through as prop */}
+            {/* second questions is the list of questions stated by the API */}
+            {questions.questions.map((question, questionIndex) => (
                 <div className={questionStyles.grid}>
+                    {/* question.question needed to display individual questions */}
                     <h3 className={questionStyles.title}>{question.question}</h3>
-                    
+                    {/* Object.values returns array from object */}
                     {Object.values(question.answers).map((answers, i) => (
+                        // Check to only display when answers has a value
                         answers !== null &&
-                            <button onClick={() => showResult(question, i, parentI)} className={questionStyles.button}>{answers}</button>
+                            // Display button with onClick event which runs showResult function
+                            <button onClick={() => showResult(question, i, questionIndex)} className={questionStyles.button}>{answers}ddasd</button>
                     ))}
 
                     {/* check if selected answer is correct */}
-                    {parentIndex == parentI &&
+                    {currentQuestionIndex == questionIndex &&
                         <div>
-                            {result == 'true' &&
+                            {correctAnswer == 'true' &&
                                 <div className={questionStyles.correct}>Correct!</div>}
 
-                            {result == 'false' &&
+                            {correctAnswer == 'false' &&
                                 <div className={questionStyles.incorrect}>Incorrect, try again 😢</div>}
                         </div>
                     }

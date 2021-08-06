@@ -1,5 +1,5 @@
     import { GetServerSidePropsContext } from 'next'
-    import * as React from 'react'
+    // import * as React from 'react'
 import { useState } from 'react'
 import questionStyles from '../../../styles/Questions.module.css'
 
@@ -13,24 +13,29 @@ const quizApiKey = process.env.QUIZ_API_KEY
     }
 
     interface PageProps {
-        questions: Questions[]
+        questions: Questions[],
+        category: string
     }
 
-    interface ResultProps {
-        question: string,
-        i: number,
-        parentI: number
+    interface ContextProps {
+        context: string,
+        params: string,
+        category: string
     }
 
-    type MyKnownType = {
-        prop1: string;
-        prop2: number;
-        prop3: boolean;
-    };
+    // interface ResultProps {
+    //     question: string,
+    //     i: number,
+    //     parentI: number
+    // }
+
+    // type MyKnownType = {
+    //     prop1: string;
+    //     prop2: number;
+    //     prop3: boolean;
+    // };
     
     // const ResObj: MyKnownType = await Res.json();
-
-
 
 
 const questions = (questions: PageProps) => {
@@ -71,8 +76,8 @@ const questions = (questions: PageProps) => {
     )
 }
 
-export const getServerSideProps: GetServerSidePropsContext = async (context) => {
-    const category = context.params.category
+export const getServerSideProps: GetServerSidePropsContext = async (context: ContextProps) => {
+    const category: string = context.params.category
 
     const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=${context.params.category}`)
     const questions = await res.json()

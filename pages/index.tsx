@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import categoryStyles from '../styles/Category.module.css'
 
-export default function Home() {
+//<-- Function to render all categories with links -->
+const Home = () => {
   return (
     <div>      
       <p>Select your quiz category:</p>
@@ -28,3 +29,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home

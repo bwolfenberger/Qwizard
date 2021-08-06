@@ -54,7 +54,7 @@ const questions = (questions: PageProps) => {
                         // Check to only display when answers has a value
                         answers !== null &&
                             // Display button with onClick event which runs showResult function
-                            <button onClick={() => showResult(question, i, questionIndex)} className={questionStyles.button}>{answers}ddasd</button>
+                            <button onClick={() => showResult(question, i, questionIndex)} className={questionStyles.button}>{answers}</button>
                     ))}
 
                     {/* Check for returning selected question index */}

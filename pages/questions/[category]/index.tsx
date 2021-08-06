@@ -57,12 +57,14 @@ const questions = (questions: PageProps) => {
                             <button onClick={() => showResult(question, i, questionIndex)} className={questionStyles.button}>{answers}ddasd</button>
                     ))}
 
-                    {/* check if selected answer is correct */}
+                    {/* Check for returning selected question index */}
                     {currentQuestionIndex == questionIndex &&
                         <div>
+                            {/* if correct answer, return div with class "correct" and corresponding text */}
                             {correctAnswer == 'true' &&
                                 <div className={questionStyles.correct}>Correct!</div>}
 
+                            {/* if incorrect answer, return div with class "incorrect" and corresponding text */}
                             {correctAnswer == 'false' &&
                                 <div className={questionStyles.incorrect}>Incorrect, try again 😢</div>}
                         </div>
@@ -73,12 +75,15 @@ const questions = (questions: PageProps) => {
     )
 }
 
+//<-- Fetch data from Quiz external source -->
 export const getServerSideProps = async (context: ContextProps) => {
+    // Set category based on params from URL
     const category: string = context.params.category
-
     const res = await fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizApiKey}&limit=10&tags=${context.params.category}`)
+    // set question to JSON format based on fetched response
     const questions = await res.json()
 
+    // Return props to be passed through
     return {
         props: {
             questions,

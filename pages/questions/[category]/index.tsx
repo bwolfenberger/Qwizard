@@ -6,6 +6,7 @@ const quizApiKey = process.env.QUIZ_API_KEY
 
 //<-- Declare interfaces for defining structure and types -->
     interface Questions {
+        id: number,
         category: string,
         question: string,
         correct_answers: string[],
@@ -26,7 +27,7 @@ const quizApiKey = process.env.QUIZ_API_KEY
     }
 // <-- Main Function -->
 // Questions prop object brought in from external quiz source
-const questions = (questions: PageProps) => {
+const Questions = (questions: PageProps) => {
     // Declare states
     const [correctAnswer, setCorrectAnswer] = useState<string>('');
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
@@ -46,7 +47,7 @@ const questions = (questions: PageProps) => {
             {/* First questions is question object brought through as prop */}
             {/* second questions is the list of questions stated by the API */}
             {questions.questions.map((question, questionIndex) => (
-                <div className={questionStyles.grid}>
+                <div key={question.id} className={questionStyles.grid}>
                     {/* question.question needed to display individual questions */}
                     <h3 className={questionStyles.title}>{question.question}</h3>
                     {/* Object.values returns array from object */}
@@ -54,7 +55,7 @@ const questions = (questions: PageProps) => {
                         // Check to only display when answers has a value
                         answers !== null &&
                             // Display button with onClick event which runs showResult function
-                            <button onClick={() => showResult(question, i, questionIndex)} className={questionStyles.button}>{answers}</button>
+                            <button onClick={() => showResult(question, i, questionIndex)} key={i} className={questionStyles.button}>{answers}</button>
                     ))}
 
                     {/* Check for returning selected question index */}
@@ -92,4 +93,4 @@ export const getServerSideProps = async (context: ContextProps) => {
     }
 }
 
-export default questions
+export default Questions

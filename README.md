@@ -1,15 +1,13 @@
 <!-- HEADER -->
 <p align="center">
-  <h3 align="center">Qwizard</h3>
+  <h1 align="center">Qwizard</h1>
 
   <p align="center">
     A quiz application designed to help learn coding!
     <br />
-    <a href="https://github.com/bwolfenberger/Qwizard"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/bwolfenberger/Qwizard"><strong>Live Site »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
-    ·
     <a href="https://github.com/bwolfenberger/Qwizard/issues">Report Bug</a>
     ·
     <a href="https://github.com/bwolfenberger/Qwizard/issues">Request Feature</a>
@@ -34,12 +32,12 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <!-- <li><a href="#usage">Usage</a></li> -->
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <!-- <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <!-- <li><a href="#acknowledgements">Acknowledgements</a></li> -->
   </ol>
 </details>
 

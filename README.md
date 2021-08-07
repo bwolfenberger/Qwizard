@@ -5,7 +5,7 @@
   <p align="center">
     A quiz application designed to help learn coding!
     <br />
-    <a href="https://github.com/bwolfenberger/Qwizard"><strong>Live Site »</strong></a>
+    <a href="https://qwizard.vercel.app/"><strong>Live Site »</strong></a>
     <br />
     <br />
     <a href="https://github.com/bwolfenberger/Qwizard/issues">Report Bug</a>

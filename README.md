@@ -49,9 +49,9 @@
 
 Quizard is a quiz app to help with learning key concepts for computer science related topics.
 
-I built this application as part of a three-day sprint with a new technology. Due to the short time, I needed to learn in an efficient manner.
+I built this application with a completely new technology which pushed me to learn in an efficient and organized manner.
 
-Data parsing was also a big emphasis for this project which is why I wanted to use an API with many layers to the data.
+Data parsing was also a big emphasis for this project which is why I wanted to use an API with many layers of data.
 
 ### Built With
 

@@ -2,10 +2,20 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "postgres"
+  url      = "file:./dev.db" env("DATABASE_URL")
 }
 
 generator client {
   provider = "prisma-client-js"
+}
+
+model Questions {
+  id String @id @default(cuid())
+  question String
+  firstAnswer String
+  secondAnswer String
+  thirdAnswer String
+  fourthAnswer String
+  correctAnswer String
 }

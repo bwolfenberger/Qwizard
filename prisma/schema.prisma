@@ -1,21 +1,21 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-datasource db {
-  provider = "postgres"
-  url      = "file:./dev.db" env("DATABASE_URL")
-}
+// datasource db {
+  // provider = "postgres"
+  // url      = "file:./dev.db" env("DATABASE_URL")
+// }
 
-generator client {
-  provider = "prisma-client-js"
-}
+// generator client {
+  // provider = "prisma-client-js"
+// }
 
-model Questions {
-  id String @id @default(cuid())
-  question String
-  firstAnswer String
-  secondAnswer String
-  thirdAnswer String
-  fourthAnswer String
-  correctAnswer String
-}
+// model Questions {
+  // id String @id @default(cuid())
+  // question String
+  // firstAnswer String
+  // secondAnswer String
+  // thirdAnswer String
+  // fourthAnswer String
+  // correctAnswer String
+// }
